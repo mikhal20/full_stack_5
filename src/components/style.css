@@ -1,0 +1,56 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .home-container, .login-container, .register-container, .info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+  }
+  
+  h1, h2 {
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  input, button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #333;
+    color: rgb(24, 28, 146);
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin: 10px 0;
+  }
+  
+  
