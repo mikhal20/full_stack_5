@@ -1,85 +1,100 @@
-/* style.css */
-
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: bisque;
   }
-  
-  .home-container, .login-container, .register-container, .info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f4f4f9;
+  .login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: bisque;
+  margin: 0;
+  padding: 0;
   }
-  
+  .home-container , .register-container, .info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: bisque;
+  margin: 0;
+  padding: 0;
+  }
+  .input-group {
+  margin-bottom: 10px;
+  }
+  .input-field {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 35px;
+  width: 100%;
+  }
   h1, h2 {
-    color: #333;
+  color: #43a843;
   }
-  
   form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   }
-  
   input, button {
-    margin: 5px;
-    padding: 10px;
-    font-size: 16px;
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
   }
-  
   button {
-    background-color: #333;
-    color: rgb(24, 28, 146);
-    border: none;
-    cursor: pointer;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
   }
-  
   button:hover {
-    background-color: #555;
-  }
+  background-color: hsl(136, 85%, 50%);
   
+  }
   .error {
-    color: red;
+  color: red;
   }
-  
   ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
   }
-  
   ul li {
-    margin: 10px 0;
+  margin: 10px 0;
   }
-  
   /* css for albums */
-
-/* style.css */
-
-.album-list {
+  
+  /* style.css */
+  
+  .album-list {
   list-style-type: none;
   padding: 0;
-}
-
-.album-list li {
+  }
+  
+  .album-list li {
   margin-bottom: 10px;
-}
-
-.photo-list {
+  }
+  
+  .photo-list {
   list-style-type: none;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-}
-
-.photo-list li {
+  }
+  
+  .photo-list li {
   margin-right: 10px;
   margin-bottom: 10px;
   text-align: center;
-}
-
-.photo-list li img {
+  }
+  
+  .photo-list li img {
   max-width: 100px;
   max-height: 100px;
   border: 1px solid #ccc;
@@ -87,22 +102,22 @@ body {
   display: block;
   margin-bottom: 5px;
   cursor: pointer;
-}
-
-.photo-list li button {
+  }
+  
+  .photo-list li button {
   background-color: #f44336;
   color: white;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 3px;
-}
-
-.add-photo, .edit-photo {
+  }
+  
+  .add-photo, .edit-photo {
   margin-top: 20px;
-}
-
-.error {
+  }
+  
+  .error {
   color: red;
-}
-
+  }
+  

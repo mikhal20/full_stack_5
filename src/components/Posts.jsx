@@ -20,6 +20,7 @@ function Posts({ currentUser }) {
   const [newPostBody, setNewPostBody] = useState('');
   const [editPostTitle, setEditPostTitle] = useState('');
   const [editPostBody, setEditPostBody] = useState('');
+  const [editCommentTitle, setEditCommentTitle] = useState('');
   const [editCommentBody, setEditCommentBody] = useState('');
   const [selectedComment, setSelectedComment] = useState(null);
 
@@ -98,13 +99,23 @@ function Posts({ currentUser }) {
 
   const handleUpdateComment = async (comment) => {
     try {
-      const updatedComment = { ...comment, body: editCommentBody };
+      const updatedComment = { ...comment, title: editCommentTitle, body: editCommentBody };
       const response = await updateComment(comment.id, updatedComment);
       setSelectedComments(selectedComments.map(c => (c.id === comment.id ? response : c)));
+      setEditCommentTitle('');
       setEditCommentBody('');
       setSelectedComment(null);
     } catch (error) {
       console.error('Error updating comment:', error);
+    }
+  };
+
+  const handleDeleteComment = async (commentId) => {
+    try {
+      await deleteComment(commentId);
+      setSelectedComments(selectedComments.filter(comment => comment.id !== commentId));
+    } catch (error) {
+      console.error('Error deleting comment:', error);
     }
   };
 
@@ -115,8 +126,13 @@ function Posts({ currentUser }) {
   };
 
   const handleEditComment = (comment) => {
+    setEditCommentTitle(comment.title);
     setEditCommentBody(comment.body);
     setSelectedComment(comment);
+  };
+
+  const canModifyComment = (comment) => {
+    return comment.email === currentUser.email;
   };
 
   return (
@@ -165,9 +181,30 @@ function Posts({ currentUser }) {
                     <ul>
                       {selectedComments.map(comment => (
                         <li key={comment.id}>
-                          <p>{comment.name}</p>
+                          <h4 onClick={() => handleEditComment(comment)}>{comment.title}</h4>
                           <p>{comment.body}</p>
-                          <button onClick={() => handleEditComment(comment)}>Edit Comment</button>
+                          {canModifyComment(comment) && (
+                            <>
+                              <button onClick={() => handleEditComment(comment)}>Edit Comment</button>
+                              <button onClick={() => handleDeleteComment(comment.id)}>Delete Comment</button>
+                              {selectedComment && selectedComment.id === comment.id && (
+                                <div>
+                                  <input
+                                    type="text"
+                                    placeholder="Edit comment title"
+                                    value={editCommentTitle}
+                                    onChange={(e) => setEditCommentTitle(e.target.value)}
+                                  />
+                                  <textarea
+                                    placeholder="Edit comment body"
+                                    value={editCommentBody}
+                                    onChange={(e) => setEditCommentBody(e.target.value)}
+                                  ></textarea>
+                                  <button onClick={() => handleUpdateComment(comment)}>Update Comment</button>
+                                </div>
+                              )}
+                            </>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -196,14 +233,21 @@ function Posts({ currentUser }) {
         ></textarea>
         <button onClick={handleAddPost}>Add Post</button>
       </div>
-      {selectedComment && (
+      {selectedComment && canModifyComment(selectedComment) && (
         <div>
+          <input
+            type="text"
+            placeholder="Edit comment title"
+            value={editCommentTitle}
+            onChange={(e) => setEditCommentTitle(e.target.value)}
+          />
           <textarea
             placeholder="Edit comment body"
             value={editCommentBody}
             onChange={(e) => setEditCommentBody(e.target.value)}
           ></textarea>
           <button onClick={() => handleUpdateComment(selectedComment)}>Update Comment</button>
+          <button onClick={() => handleDeleteComment(selectedComment.id)}>Delete Comment</button>
         </div>
       )}
     </div>
@@ -211,6 +255,13 @@ function Posts({ currentUser }) {
 }
 
 export default Posts;
+
+
+
+
+
+
+
 
 
 
