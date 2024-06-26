@@ -33,7 +33,11 @@ const Register = () => {
         body: JSON.stringify(newUser)
       });
 
-      navigate('/login');
+      // Stocker les détails de l'utilisateur dans localStorage
+      localStorage.setItem('newUser', JSON.stringify(newUser));
+
+      // Rediriger vers CompleteRegistration
+      navigate('/complete-registration', { state: { username, password } });
     } catch (err) {
       setError('An error occurred');
     }
@@ -71,5 +75,9 @@ const Register = () => {
 }
 
 export default Register;
+
+
+
+
 
 

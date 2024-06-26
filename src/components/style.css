@@ -53,4 +53,56 @@ body {
     margin: 10px 0;
   }
   
-  
+  /* css for albums */
+
+/* style.css */
+
+.album-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.album-list li {
+  margin-bottom: 10px;
+}
+
+.photo-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo-list li {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.photo-list li img {
+  max-width: 100px;
+  max-height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.photo-list li button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.add-photo, .edit-photo {
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+}
+

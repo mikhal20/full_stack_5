@@ -7,6 +7,7 @@ import UserInfo from './components/UserInfo';
 import Todos from './components/Todos';
 import Posts from './components/Posts';
 import Albums from './components/Albums';
+import CompleteRegistration from './components/CompleteRegistration';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -27,6 +28,8 @@ const App = () => {
       <Route path="/todos" element={currentUser ? <Todos currentUser={currentUser} /> : <Navigate to="/login" />} />
       <Route path="/posts" element={currentUser ? <Posts currentUser={currentUser} /> : <Navigate to="/login" />} />
       <Route path="/albums" element={currentUser ? <Albums currentUser={currentUser} /> : <Navigate to="/login" />} />
+      <Route path="/complete-registration" element={currentUser ? <CompleteRegistration currentUser={currentUser} /> : <Navigate to="/login" />} />
+      <Route path="/user-info" element={currentUser ? <UserInfo currentUser={currentUser} /> : <Navigate to="/login" />} />
       <Route path="/" element={<Navigate to="/login" />} />
     </Routes>
   );

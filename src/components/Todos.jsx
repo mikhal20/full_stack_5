@@ -8,6 +8,8 @@ function Todos({ currentUser }) {
   const [searchCriteria, setSearchCriteria] = useState('');
   const [newTodoTitle, setNewTodoTitle] = useState('');
   const [error, setError] = useState('');
+  const [editTodoId, setEditTodoId] = useState(null); // State to track the todo being edited
+  const [editTodoTitle, setEditTodoTitle] = useState(''); // State to track the edited todo title
 
   useEffect(() => {
     if (currentUser) {
@@ -87,6 +89,28 @@ function Todos({ currentUser }) {
     setFilteredTodos(filtered);
   };
 
+  const handleEditChange = (value) => {
+    setEditTodoTitle(value);
+  };
+
+  const handleSaveEdit = async (id) => {
+    try {
+      const todoToUpdate = filteredTodos.find(todo => todo.id === id);
+      await updateTodo(id, { title: editTodoTitle });
+      
+      // Mise à jour de todos et filteredTodos avec le todo modifié
+      const updatedTodos = todos.map(todo => (todo.id === id ? { ...todo, title: editTodoTitle } : todo));
+      setTodos(updatedTodos);
+      
+      const updatedFilteredTodos = filteredTodos.map(todo => (todo.id === id ? { ...todo, title: editTodoTitle } : todo));
+      setFilteredTodos(updatedFilteredTodos);
+      
+      setEditTodoId(null); // Exit edit mode
+    } catch (error) {
+      setError('Error updating todo');
+    }
+  };
+
   return (
     <div>
       <h2>Todos</h2>
@@ -114,14 +138,27 @@ function Todos({ currentUser }) {
       <ul>
         {filteredTodos.map((todo, index) => (
           <li key={todo.id}>
-            <span>{index + 1}. </span>
-            <span>{todo.title}</span>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={(e) => handleUpdateTodo(todo.id, { completed: e.target.checked })}
-            />
-            <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+            {editTodoId === todo.id ? (
+              <>
+                <input
+                  type="text"
+                  value={editTodoTitle}
+                  onChange={(e) => handleEditChange(e.target.value)}
+                />
+                <button onClick={() => handleSaveEdit(todo.id)}>Save</button>
+              </>
+            ) : (
+              <>
+                <span>{index + 1}. </span>
+                <span onClick={() => { setEditTodoId(todo.id); setEditTodoTitle(todo.title); }}>{todo.title}</span>
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={(e) => handleUpdateTodo(todo.id, { completed: e.target.checked })}
+                />
+                <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+              </>
+            )}
           </li>
         ))}
       </ul>
@@ -131,3 +168,6 @@ function Todos({ currentUser }) {
 }
 
 export default Todos;
+
+
+

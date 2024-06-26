@@ -13,7 +13,7 @@ const Home = ({ currentUser, setCurrentUser }) => {
 
   const handleInfoClick = () => {
     // Rediriger vers la page d'information de l'utilisateur
-    navigate('/info');
+    navigate('/userinfo');
   };
 
   const handleTodosClick = () => {
