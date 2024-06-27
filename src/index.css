@@ -1,78 +1,85 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: white;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  font-family: Arial, sans-serif;
+  background-color: bisque;
   }
-  
-  a {
-  font-weight: 500;
-  color: black;
-  text-decoration: inherit;
-  }
-  
-  a:hover {
-  color: green;
-  }
-  
-  body {
+  .login-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100vw;
   height: 100vh;
+  background-color: bisque;
   margin: 0;
+  padding: 0;
   }
-  
-  h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  margin-bottom: 1em;
-  }
-  
-  h2 {
+  .home-container , .register-container, .info-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin: 40px auto;
-  position: absolute;
-  left: 50%;
-  top: 3%;
-  transform: translate(-50%, -50%);
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: bisque;
+  margin: 0;
+  padding: 0;
+  }
+  .input-group {
+  margin-bottom: 10px;
   }
   .input-field {
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 400;
-  font-family: inherit;
+  padding: 10px;
+  font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 35px;
   width: 100%;
-  margin-bottom: 1em;
-  color:black;
   }
+  h1, h2 {
+  color: #43a843;
+  }
+  form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  input, button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  }
+  button {
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  }
+  button:hover {
+  background-color: hsl(136, 85%, 50%);
   
-  
+  }
   .error {
-  color: #ff0000;
-  font-size: 0.8em;
-  margin-top: 0.5em;
+  color: red;
   }
-  
-  @media (prefers-color-scheme: light) {
-  :root {
-  color: #1882de;
-  background-color: #ffffff;
+  ul {
+  list-style: none;
+  padding: 0;
   }
-  a:hover {
-  color: #747bff;
+  ul li {
+  margin: 10px 0;
   }
-  .btn-primary {
-  background-color: #f9f9f9;
-  }
-  }
+/*user info styles*/
+.user-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust height as needed */
+}
+
+.user-info {
+  max-width: 800px; /* Adjust max-width as needed */
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

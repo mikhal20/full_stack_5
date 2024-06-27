@@ -5,12 +5,6 @@ import './style.css';
 const Home = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    setCurrentUser(null);
-    localStorage.removeItem('currentUser');
-    navigate('/login');
-  };
-
   const handleInfoClick = () => {
     // Rediriger vers la page d'information de l'utilisateur
     navigate('/userinfo');
@@ -40,7 +34,7 @@ const Home = ({ currentUser, setCurrentUser }) => {
           <button onClick={handleTodosClick}>Todos</button>
           <button onClick={handlePostsClick}>Posts</button>
           <button onClick={handleAlbumsClick}>Albums</button>
-          <button onClick={handleLogout}>Logout</button>
+          
         </div>
       </div>
     </div>

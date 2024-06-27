@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const Register = ({ setCurrentUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVerify, setPasswordVerify] = useState('');
@@ -35,6 +35,8 @@ const Register = () => {
 
       // Stocker les détails de l'utilisateur dans localStorage
       localStorage.setItem('newUser', JSON.stringify(newUser));
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      setCurrentUser(newUser);
 
       // Rediriger vers CompleteRegistration
       navigate('/complete-registration', { state: { username, password } });
@@ -72,9 +74,20 @@ const Register = () => {
       </form>
     </div>
   );
-}
+};
 
 export default Register;
+
+
+
+
+
+
+
+
+
+
+
 
 
 

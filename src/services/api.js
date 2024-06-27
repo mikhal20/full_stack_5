@@ -78,11 +78,6 @@ export async function updateTodo(todoId, updatedFields) {
   }
 }
 
-
-  
- 
-
-
 /*albums fonctions*/
 // Function to fetch albums by user ID
 export async function getAlbumsByUserId(userId) {
@@ -243,7 +238,7 @@ export async function addPhotoToAlbum(albumId, photoData) {
         body: JSON.stringify(commentData),
       }).then(response => response.json());
     };
-// src/services/api.js
+
 const apiUrl = 'http://localhost:3001';
 
 export const getPostsByUserId = async (userId) => {
